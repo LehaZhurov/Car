@@ -5,6 +5,6 @@ namespace App\Http\Requests;
 interface SearchCarParams
 {
 
-    public function getFilter(): array|null;
+    public function getFilters(): array|null;
     public function getUserId(): int;
 }

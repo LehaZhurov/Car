@@ -28,4 +28,14 @@ class Car extends Model
         'free',
         'comfrot_leval'
     ];
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function trips()
+    {
+        return $this->hasMany(Trip::class);
+    }
 }

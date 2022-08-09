@@ -10,9 +10,9 @@ use App\Http\Requests\SearchCarParams;
 class SearchCarRequest extends FormRequest implements SearchCarParams
 {
 
-    public function getFilter(): array
+    public function getFilters(): array
     {
-        return $this->input('filter');
+        return $this->input('filters');
     }
 
     public function getUserId(): int
@@ -25,7 +25,7 @@ class SearchCarRequest extends FormRequest implements SearchCarParams
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize() : bool
     {
         return true;
     }
@@ -35,13 +35,12 @@ class SearchCarRequest extends FormRequest implements SearchCarParams
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules() : array
     {
         return [
             'user_id' => ['required','int'],
-            'filter.trip_date' => ['required','date_format:Y:m:d|h:m'],
-            'filter.marka' => ['string'],
-            'filter.comfrot_leval' => ['int','max:3','min:1']
+            'filters.tripdate' => ['required','date'],
+            'filters.marka' => ['string'],
             
         ];
     }
